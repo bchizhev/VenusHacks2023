@@ -8,7 +8,7 @@ div {
     border-radius: 30px;
 }
 /* CSS happy */
-#option_happy {
+.option_happy {
   background-color: #fbeee0;
   border: 2px solid #422800;
   border-radius: 30px;
@@ -50,24 +50,24 @@ div {
     
 }
 
-#option_happy:hover {
+.option_happy:hover {
   background-color: #fff;
 }
 
-#option_happy:active {
+.option_happy:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 
 @media (min-width: 768px) {
-    #option_happy {
+    .option_happy {
     min-width: 120px;
     padding: 0 25px;
   }
 }
 
 /* CSS sad*/
-#option_sad {
+.option_sad {
     background-color: #fbeee0;
     border: 2px solid #422800;
     border-radius: 30px;
@@ -86,24 +86,24 @@ div {
     touch-action: manipulation;
   }
   
-  #option_sad:hover {
+  .option_sad:hover {
     background-color: #fff;
   }
   
-  #option_sad:active {
+  .option_sad:active {
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
   }
   
   @media (min-width: 768px) {
-      #option_sad {
+      .option_sad {
       min-width: 120px;
       padding: 0 25px;
     }
   }
 
   /* CSS angry */
-#option_angry {
+.option_angry {
     background-color: #fbeee0;
     border: 2px solid #422800;
     border-radius: 30px;
@@ -122,17 +122,17 @@ div {
     touch-action: manipulation;
   }
   
-  #option_angry:hover {
+  .option_angry:hover {
     background-color: #fff;
   }
   
-  #option_angry:active {
+  .option_angry:active {
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
   }
   
   @media (min-width: 768px) {
-      #option_angry {
+      .option_angry {
       min-width: 120px;
       padding: 0 25px;
     }
@@ -141,7 +141,7 @@ div {
 
 
   /* CSS romantic */
-#option_romantic {
+.option_romantic {
     background-color: #fbeee0;
     border: 2px solid #422800;
     border-radius: 30px;
@@ -160,17 +160,17 @@ div {
     touch-action: manipulation;
   }
   
-  #option_romantic:hover {
+  .option_romantic:hover {
     background-color: #fff;
   }
   
-  #option_romantic:active {
+  .option_romantic:active {
     box-shadow: #422800 2px 2px 0 0;
     transform: translate(2px, 2px);
   }
   
   @media (min-width: 768px) {
-      #option_romantic {
+      .option_romantic {
       min-width: 120px;
       padding: 0 25px;
     }
