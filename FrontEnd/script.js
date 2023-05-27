@@ -1,8 +1,26 @@
-// Get the value of the name input from the form and update the greeting
+const clientId = "your-client-id-here"; // Replace with your client id
+const code = undefined;
 
-const greetingText = document.querySelector("#greeting");                   // get greeting element
-const inputElement = document.querySelector("#exampleFormControlInput1");   // get input element
-const btn = document.querySelector("#exampleFormBtn");                      // get the element with id = 'exampleFormBtn'
-btn.addEventListener('click', function() {                                  // add an event to the button: whenever the button is pressed, update the greeting name
-    greetingText.innerHTML = `Hello, ${inputElement.value}`;                // this is a templated string in Javscript! https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals 
-});
+if (!code) {
+    redirectToAuthCodeFlow(clientId);
+} else {
+    const accessToken = await getAccessToken(clientId, code);
+    const profile = await fetchProfile(accessToken);
+    populateUI(profile);
+}
+
+async function redirectToAuthCodeFlow(clientId: string) {
+    // TODO: Redirect to Spotify authorization page
+}
+
+async function getAccessToken(clientId: string, code: string) {
+  // TODO: Get access token for code
+}
+
+async function fetchProfile(token: string): Promise<any> {
+    // TODO: Call Web API
+}
+
+function populateUI(profile: any) {
+    // TODO: Update UI with profile data
+}
