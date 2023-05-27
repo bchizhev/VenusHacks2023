@@ -7,8 +7,8 @@ div {
     background-color: rgb(248, 160, 160);
     border-radius: 30px;
 }
-/* CSS */
-#options {
+/* CSS happy */
+#option_happy {
   background-color: #fbeee0;
   border: 2px solid #422800;
   border-radius: 30px;
@@ -27,18 +27,151 @@ div {
   touch-action: manipulation;
 }
 
-#options:hover {
+.container {
+    display: grid;
+    row-gap: 20px;
+    max-width: 300px;
+    padding: 50px;
+    margin: 20px auto;
+}
+
+.container > button {
+    background-color: #fbeee0;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+   
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    
+}
+
+#option_happy:hover {
   background-color: #fff;
 }
 
-#options:active {
+#option_happy:active {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 
 @media (min-width: 768px) {
-    #options {
+    #option_happy {
     min-width: 120px;
     padding: 0 25px;
   }
 }
+
+/* CSS sad*/
+#option_sad {
+    background-color: #fbeee0;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #option_sad:hover {
+    background-color: #fff;
+  }
+  
+  #option_sad:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+  
+  @media (min-width: 768px) {
+      #option_sad {
+      min-width: 120px;
+      padding: 0 25px;
+    }
+  }
+
+  /* CSS angry */
+#option_angry {
+    background-color: #fbeee0;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #option_angry:hover {
+    background-color: #fff;
+  }
+  
+  #option_angry:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+  
+  @media (min-width: 768px) {
+      #option_angry {
+      min-width: 120px;
+      padding: 0 25px;
+    }
+  }
+
+
+
+  /* CSS romantic */
+#option_romantic {
+    background-color: #fbeee0;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #option_romantic:hover {
+    background-color: #fff;
+  }
+  
+  #option_romantic:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+  
+  @media (min-width: 768px) {
+      #option_romantic {
+      min-width: 120px;
+      padding: 0 25px;
+    }
+  }
