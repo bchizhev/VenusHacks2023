@@ -1,17 +1,19 @@
 # app.py
 import os
 from dotenv import load_dotenv
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, jsonify
 import requests
 import urllib
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 load_dotenv()
 # Replace these placeholders with your actual client ID and client secret
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-
+print(CLIENT_ID, CLIENT_SECRET)
 # Spotify API endpoints
 AUTHORIZE_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
@@ -30,7 +32,7 @@ def login():
         'response_type': 'code',
         'client_id': CLIENT_ID,
         'redirect_uri': REDIRECT_URI,
-        'scope': 'user-read-private user-read-email',
+        'scope': 'user-read-private user-read-email user-top-read',
     }
     authorize_url = f'{AUTHORIZE_URL}?{urllib.parse.urlencode(params)}'
     # print(authorize_url.access_token)
@@ -71,8 +73,8 @@ def get_top_10_tracks():
                           headers=auth_header)
     except e:
         print(e)
-    print(result.data)
-    return ""
+    print(result)
+    return jsonify(result.json())
     # json_result = json.loads(result.content)
     # print(json_result)
 

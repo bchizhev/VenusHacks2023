@@ -20,7 +20,16 @@ function submit() {
     })
     .then(res => res.json())
     .then(data => {
-        document.getElementById('display').innerHTML = data.message
+        // document.getElementById('display').innerHTML = JSON.stringify(data)
+        console.log(data)
+
+        for(let i = 0; i < data.items.length; i++){
+            document.getElementById('display').innerHTML += `
+             <div>${data.items[i].name}</div>
+             <audio controls src="${data.items[i].preview_url}"></audio>
+
+            `
+        }
     });
 
 }
