@@ -1,26 +1,23 @@
-const clientId = "your-client-id-here"; // Replace with your client id
-const code = undefined;
+let serverUrl = 'https://localhost:8000/callback';
 
-if (!code) {
-    redirectToAuthCodeFlow(clientId);
-} else {
-    const accessToken = await getAccessToken(clientId, code);
-    const profile = await fetchProfile(accessToken);
-    populateUI(profile);
-}
 
-async function redirectToAuthCodeFlow(clientId: string) {
-    // TODO: Redirect to Spotify authorization page
-}
+function submit() {
+    let answer1 = document.getElementById('question1').value;
 
-async function getAccessToken(clientId: string, code: string) {
-  // TODO: Get access token for code
-}
 
-async function fetchProfile(token: string): Promise<any> {
-    // TODO: Call Web API
-}
 
-function populateUI(profile: any) {
-    // TODO: Update UI with profile data
-}
+
+ 
+    fetch(serverUrl, {
+      mathod:'POST',
+      body: JSON.stringify({
+        mood: answer1,
+        erhrtj: 23,
+        authToken: 'dfghdghr345tg'
+       
+      })
+    })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('display').innerHTML = data.message
+        })
