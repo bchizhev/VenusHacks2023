@@ -197,5 +197,23 @@ h2 {
     font-style: bold;
     font-size: 20px;
     margin-top: 20px;
-    margin: auto;
+    margin-left: 100px;
+}
+
+.close {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 0 12px;
+    line-height: 12px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
