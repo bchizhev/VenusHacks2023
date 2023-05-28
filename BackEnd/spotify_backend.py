@@ -1,4 +1,3 @@
-# app.py
 import os
 from dotenv import load_dotenv
 from flask import Flask, redirect, request, jsonify
@@ -13,7 +12,6 @@ load_dotenv()
 # Replace these placeholders with your actual client ID and client secret
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-print(CLIENT_ID, CLIENT_SECRET)
 # Spotify API endpoints
 AUTHORIZE_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
@@ -61,7 +59,7 @@ def get_top_10_tracks():
     token = json.loads(request.data)['authToken']
     auth_header = {'Authorization': 'Bearer ' + token}
     # modify me in url to get user's spotify information
-    url = 'https://api.spotify.com/v1/me/top/tracks'
+    url = 'https://api.spotify.com/v1/me/top/artists'
     msg = '?time_range=medium_term&limit=10&offset=5'
     try: 
         result = requests.get(url,
@@ -73,25 +71,27 @@ def get_top_10_tracks():
                           headers=auth_header)
     except e:
         print(e)
-    print(result)
+    """print(result)
+    print('RESULTS:',len(result.json()['items']))
+    print('RESULTS:', result.json()['items'][0])
+    print('RESULTS:', result.json()['items'][0]['name'])
+    print('RESULTS:', result.json()['items'][0]['id'])"""
+    artists_to_id = extract_artists(result)
     return jsonify(result.json())
     # json_result = json.loads(result.content)
     # print(json_result)
 
-    """if result.status_code == 200:
-        data = result.json()
-        # Process the data as needed
-        print(data)
-    else:
-        print('Error:', result.status_code)"""
-    """auth_header = {'Authorization': 'Bearer ' + token}
-    # modify me to get user's spotify information
-    url = 'https://api.spotify.com/v1/me/top/tracks'
-    # query = f'?offset=1&limit=10'
-    query_url = url
-    result = requests.get(query_url, headers = auth_header)
-    json_result = json.loads(result.content)
-    print(json_result)"""
+def extract_artists(result) -> dict:
+    artist_to_id = {}
+    for index in range(len(result.json()['items'])):
+        id_dict = {'id': result.json()['items'][index]['id']}
+        artist_to_id[result.json()['items'][index]['name']] = id_dict
+    """print(artist_to_id)
+    for artist, id in artist_to_id.items():
+        print('Artist:', artist)
+        print('Information:', id)
+        print()"""
+    return artist_to_id
 
 
 if __name__ == '__main__':
