@@ -17,7 +17,6 @@ CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 # Spotify API endpoints
 AUTHORIZE_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
-
 # Redirect URI that Spotify will redirect back to after authentication
 REDIRECT_URI = 'http://localhost:8000/callback'
 
@@ -74,6 +73,33 @@ def extract_artist_info(result) -> dict:
     return artist_info
 
 def filter_artists(mood_keyword, artists_info):
+    mood_dict = {
+        'happy': ['children', 'comedy', 'happy', 'kids', 'j-dance', 'j-idol', 'j-pop'
+                  'j-rock', 'k-pop', 'pop', 'power-pop', 'indie', 'indie-pop'],
+        'sad': ['blues', 'emo', 'honky-tonk', 'sad', 'indie', 'indie-pop'],
+        'angry': ['alt-rock', 'black-metal', 'death-metal', 'goth', 'grindcore',
+                  'grunge', 'hard-rock', 'hardcore', 'heavy-metal', 'industrial', 'metal',
+                  'metal-misc', 'metalcore', 'psych-rock', 'punk', 'punk-rock', 'rock'],
+        'romantic': ['country', 'romance'],
+        'focused': ['acoustic', 'classical', 'groove', 'guitar', 'jazz',
+                    'new age', 'piano', 'study'],
+        'hype': ['breakbeat', 'chicago-house', 'club', 'dance', 'deep-house',
+                 'detroit-techno', 'disco', 'drum-and-bass', 'dub', 'dubstep', 'edm',
+                 'electro', 'electronic', 'forro', 'funk', 'garage', 'hardstyle',
+                 'hip-hop', 'holidays', 'house', 'idm', 'minimal-techno', 'party',
+                 'post-dubstep', 'progressive-house', 'road-trip', 'soul', 'summer',
+                 'techno', 'work-out'],
+        'chill': ['ambient', 'chill', 'rainy-day', 'sleep', 'trance'],
+        'main character': ['anime', 'disney', 'movies', 'indie', 'indie-pop', 'opera',
+                           'pop-film', 'show-tunes', 'soundtracks'],
+        'cultural': ['afrobeat', 'bluegrass', 'bossanova', 'brazil', 'british', 'cantopop',
+                     'dancehall', 'folk', 'french', 'german', 'gospel', 'indian', 'iranian',
+                     'latin', 'latino', 'malay', 'mandopop', 'mpb', 'pagode', 'philippines-opm',
+                     'reggae', 'reggaeton', 'salsa', 'samba', 'sertanejo', 'ska', 'spanish',
+                     'swedish', 'tango', 'turkish', 'world-music'],
+        'neutral': ['alternative', 'new-release', 'rockabilly', 'r-n-b', 'rock-n-roll',
+                    'singer-songwriter', 'songwriter', 'synth-pop', 'trip-hop']
+    }
     for artist, info in artists_info.items():
         if mood_keyword not in info['genres']:
             del artists_info[artist]
