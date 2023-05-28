@@ -30,7 +30,7 @@ def login():
         'response_type': 'code',
         'client_id': CLIENT_ID,
         'redirect_uri': REDIRECT_URI,
-        'scope': 'user-read-private user-read-email user-top-read',
+        'scope': 'user-read-private user-read-email user-top-read playlist-modify-private',
     }
     authorize_url = f'{AUTHORIZE_URL}?{urllib.parse.urlencode(params)}'
     # print(authorize_url.access_token)
@@ -68,24 +68,51 @@ def get_top_10_tracks():
     print('RESULTS:', result.json()['items'][0])
     print('RESULTS:', result.json()['items'][0]['name'])
     print('RESULTS:', result.json()['items'][0]['id'])"""
-    # print(result.json()['items'][0])
-    artists_info = extract_artist_info(result, token)
+    # print(result.json())
+    artists_info = extract_artist_info(result)
+    user_id = get_user_spotify_id(auth_header)
+    # similar_artist = get_similar_artists()
+    playlist_id, playlist_uri = create_new_playlist(user_id, token)
+    # artists_info['Stray Kids']
     return jsonify(result.json())
     # json_result = json.loads(result.content)
     # print(json_result)
 
-def extract_artist_info(result, auth_header) -> dict:
+def extract_artist_info(result) -> dict:
     artist_info = {}
     for index in range(len(result.json()['items'])):
         info_dict = {}
         info_dict['id'] = result.json()['items'][index]['id']
         info_dict['genres'] = result.json()['items'][index]['genres']
         artist_info[result.json()['items'][index]['name']] = info_dict
-    """for artist, id in artist_info.items():
-        print('Artist:', artist)
-        print('Information:', id)
-        print()"""
+        # print(artist_info)
     return artist_info
+
+def get_user_spotify_id(auth_header):
+    url = 'https://api.spotify.com/v1/me'
+    result = requests.get(url, headers=auth_header)
+    return result.json()['id']
+
+def create_new_playlist(user_id, token) -> tuple:
+    url = f'https://api.spotify.com/v1/users/{user_id}/playlists'
+    auth_header = {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+    }
+    data = json.dumps({
+        'name': 'mood~~id + uri',
+        'description': 'A new curated playlist unique for you based on your mood!',
+        'public': False
+    })
+    result = requests.post(url, headers=auth_header, data=data)
+    print(result.json())
+    playlist_id = result.json()['id']
+    playlist_uri = result.json()['uri']
+    return playlist_id, playlist_uri
+
+
+def get_similar_artists(artist, auth_header):
+    pass
 
 
 if __name__ == '__main__':
