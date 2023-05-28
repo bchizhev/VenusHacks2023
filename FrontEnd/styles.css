@@ -1,12 +1,36 @@
 body {
     text-align: center;
-    background-color: #FFE3E1;
+    background-color: #0b0a0a;
 }
 
 div {
-    background-color: rgb(248, 160, 160);
+    background-color: rgb(46, 167, 84);
     border-radius: 30px;
 }
+
+.container {
+    display: grid;
+    row-gap: 20px;
+    max-width: 500px;
+    padding: 50px;
+    margin: 20px auto;
+}
+
+.container > button {
+    background-color: #fbeee0;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+   
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    
+}
+
 /* CSS happy */
 .option_happy {
   background-color: #fbeee0;
@@ -27,28 +51,6 @@ div {
   touch-action: manipulation;
 }
 
-.container {
-    display: grid;
-    row-gap: 20px;
-    max-width: 300px;
-    padding: 50px;
-    margin: 20px auto;
-}
-
-.container > button {
-    background-color: #fbeee0;
-    border: 2px solid #422800;
-    border-radius: 30px;
-    box-shadow: #422800 4px 4px 0 0;
-    color: #422800;
-   
-    font-weight: 600;
-    font-size: 18px;
-    padding: 0 18px;
-    line-height: 50px;
-    text-align: center;
-    
-}
 
 .option_happy:hover {
   background-color: #fff;
