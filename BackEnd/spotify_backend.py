@@ -52,11 +52,16 @@ def callback():
 @app.route('/topTenTracks', methods=['POST'])
 def get_top_10_tracks():
     token = json.loads(request.data)['authToken']
+    mood_keyword = json.loads(request.data)['mood']
     auth_header = {'Authorization': 'Bearer ' + token}
     url = 'https://api.spotify.com/v1/me/top/artists'
     result = requests.get(url, headers=auth_header)
 
     artists_info = extract_artist_info(result)
+    # print(artists_info)
+    filter_artists(mood_keyword, artists_info)
+    # print()
+    # print(artists_info)
     user_id = get_user_spotify_id(auth_header)
     similar_songs = get_similar_artists_top_songs(artists_info, auth_header)
     playlist_id, playlist_uri = create_new_playlist(user_id, token)
@@ -100,8 +105,13 @@ def filter_artists(mood_keyword, artists_info):
         'neutral': ['alternative', 'new-release', 'rockabilly', 'r-n-b', 'rock-n-roll',
                     'singer-songwriter', 'songwriter', 'synth-pop', 'trip-hop']
     }
+    artists_to_delete = []
     for artist, info in artists_info.items():
-        if mood_keyword not in info['genres']:
+        if not any(genre in mood_dict[mood_keyword] for genre in info['genres']):
+            artists_to_delete.append(artist)
+    
+    if len(artists_to_delete) != len(artists_info):
+        for artist in artists_to_delete:
             del artists_info[artist]
 
 def get_user_spotify_id(auth_header):
