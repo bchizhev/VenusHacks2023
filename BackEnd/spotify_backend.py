@@ -5,6 +5,8 @@ import requests
 import urllib
 import json
 from flask_cors import CORS
+import random
+
 
 app = Flask(__name__)
 CORS(app)
@@ -46,8 +48,6 @@ def callback():
     }
     response = requests.post(TOKEN_URL, data=data)
     resp = response.json()
-
-    print(resp['access_token'])
     return redirect('http://localhost:5500/FrontEnd/?token=' + resp['access_token'])
 
 @app.route('/topTenTracks', methods=['POST'])
@@ -62,8 +62,6 @@ def get_top_10_tracks():
     similar_songs = get_similar_artists_top_songs(artists_info, auth_header)
     playlist_id, playlist_uri = create_new_playlist(user_id, token)
     playlist_add_songs(playlist_id, playlist_uri, similar_songs, token)
-    # print(result.json()['items'][0])
-    # artists_info['Stray Kids']
     return jsonify(result.json())
 
 def extract_artist_info(result) -> dict:
@@ -92,7 +90,7 @@ def create_new_playlist(user_id, token) -> tuple:
         'Content-Type': 'application/json'
     }
     data = json.dumps({
-        'name': '~~mood~~',
+        'name': '~~mood<3~~',
         'description': 'A new curated playlist unique for you based on your mood!',
         'public': False
     })
@@ -109,38 +107,28 @@ def playlist_add_songs(playlist_id, playlist_uri, songs_uri, token):
     }
     data = json.dumps(songs_uri)
     result = requests.post(url, headers=auth_header, data=data)
-    print(result)
 
 def get_similar_artists_top_songs(artists, auth_header):
     song_info = []
-    print(artists)
-    for artist, info in artists.items():
-        # print(info['id'])
+    for info in artists.values():
         id = info['id']
-        # print(artist, info['id'])
         url = f'https://api.spotify.com/v1/artists/{id}/related-artists'
         result = requests.get(url, headers=auth_header)
-        # print(result)
         five_similar_artists = result.json()['artists'][:4]
         for artists in five_similar_artists:
             artist_id = artists['id']
             url = f'https://api.spotify.com/v1/artists/{artist_id}/top-tracks?market=US'
             result = requests.get(url, headers=auth_header)
-            # print(artist)
-            
+            random_index = random.randint(0, len(result.json()['tracks']) - 1)
             print('Artist name:', artists['name'])
             print('Artist id:', artist_id)
-            print('Song:', result.json()['tracks'][0]['name'])
-            print('Song uri:', result.json()['tracks'][0]['uri'])
+            print('Song:', result.json()['tracks'][random_index]['name'])
+            print('Song uri:', result.json()['tracks'][random_index]['uri'])
             print()
-            song_uri = result.json()['tracks'][0]['uri']
+            song_uri = result.json()['tracks'][random_index]['uri']
             if song_uri not in song_info:
                 song_info.append(song_uri)
     return song_info
-
-def get_artist_top_song(artist_id, auth_header):
-    url = f'https://api.spotify.com/v1/artists/{artist_id}/top-tracks'
-
 
 
 if __name__ == '__main__':
