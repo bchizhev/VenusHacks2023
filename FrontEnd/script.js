@@ -33,3 +33,8 @@ function submit() {
     });
 
 }
+
+function logout() {
+    const url = 'https://accounts.spotify.com/en/logout'                                                                                                                                                                                                                                                                          
+    window.location.href = url
+}
