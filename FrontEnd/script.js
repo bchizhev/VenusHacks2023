@@ -1,4 +1,4 @@
-let serverUrl = 'http://localhost:8000/topTenTracks';
+let serverUrl = 'http://localhost:8000/yourmoodplaylist';
 
 
 function submit(answer1) {

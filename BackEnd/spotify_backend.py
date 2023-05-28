@@ -49,8 +49,8 @@ def callback():
     resp = response.json()
     return redirect('http://localhost:5500/FrontEnd/?token=' + resp['access_token'])
 
-@app.route('/topTenTracks', methods=['POST'])
-def get_top_10_tracks():
+@app.route('/yourmoodplaylist', methods=['POST'])
+def get_your_mood_playlist():
     token = json.loads(request.data)['authToken']
     mood_keyword = json.loads(request.data)['mood']
     auth_header = {'Authorization': 'Bearer ' + token}
@@ -58,10 +58,7 @@ def get_top_10_tracks():
     result = requests.get(url, headers=auth_header)
 
     artists_info = extract_artist_info(result)
-    # print(artists_info)
     filter_artists(mood_keyword, artists_info)
-    # print()
-    # print(artists_info)
     user_id = get_user_spotify_id(auth_header)
     similar_songs = get_similar_artists_top_songs(artists_info, auth_header)
     playlist_id, playlist_uri = create_new_playlist(user_id, token)
@@ -126,7 +123,7 @@ def create_new_playlist(user_id, token) -> tuple:
         'Content-Type': 'application/json'
     }
     data = json.dumps({
-        'name': '~~mood<3~~',
+        'name': 'yeur',
         'description': 'A new curated playlist unique for you based on your mood!',
         'public': False
     })
