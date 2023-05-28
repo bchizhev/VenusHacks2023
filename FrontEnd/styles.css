@@ -8,12 +8,23 @@ div {
     border-radius: 30px;
 }
 
+h1 {
+    color: rgb(255, 255, 255);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    size: 20px;
+}
+
+h2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+
 .container {
     display: grid;
     row-gap: 20px;
     max-width: 500px;
     padding: 50px;
-    margin: 20px left;
+    margin: 20px auto;
 }
 
 .container > button {
@@ -184,6 +195,7 @@ div {
     padding: 0 25px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style: bold;
-    font-size: 20px;   
-    margin: 20px right;
+    font-size: 20px;
+    margin-top: 20px;
+    margin: auto;
 }
