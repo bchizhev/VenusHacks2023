@@ -58,17 +58,9 @@ def callback():
 def get_top_10_tracks():
     token = json.loads(request.data)['authToken']
     auth_header = {'Authorization': 'Bearer ' + token}
-    # modify me in url to get user's spotify information
     url = 'https://api.spotify.com/v1/me/top/artists'
-    msg = '?time_range=medium_term&limit=10&offset=5'
     try: 
-        result = requests.get(url,
-                            #    params = {
-                            #        'time_range': 'medium_term',
-                            #        'limit': 10,
-                            #        'offset': 5
-                            #    },
-                          headers=auth_header)
+        result = requests.get(url, headers=auth_header)
     except e:
         print(e)
     """print(result)
@@ -76,22 +68,24 @@ def get_top_10_tracks():
     print('RESULTS:', result.json()['items'][0])
     print('RESULTS:', result.json()['items'][0]['name'])
     print('RESULTS:', result.json()['items'][0]['id'])"""
-    artists_to_id = extract_artists(result)
+    # print(result.json()['items'][0])
+    artists_info = extract_artist_info(result, token)
     return jsonify(result.json())
     # json_result = json.loads(result.content)
     # print(json_result)
 
-def extract_artists(result) -> dict:
-    artist_to_id = {}
+def extract_artist_info(result, auth_header) -> dict:
+    artist_info = {}
     for index in range(len(result.json()['items'])):
-        id_dict = {'id': result.json()['items'][index]['id']}
-        artist_to_id[result.json()['items'][index]['name']] = id_dict
-    """print(artist_to_id)
-    for artist, id in artist_to_id.items():
+        info_dict = {}
+        info_dict['id'] = result.json()['items'][index]['id']
+        info_dict['genres'] = result.json()['items'][index]['genres']
+        artist_info[result.json()['items'][index]['name']] = info_dict
+    """for artist, id in artist_info.items():
         print('Artist:', artist)
         print('Information:', id)
         print()"""
-    return artist_to_id
+    return artist_info
 
 
 if __name__ == '__main__':
