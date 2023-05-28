@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-color: #0b0a0a;
+    background-image: url("https://media.istockphoto.com/id/1366050746/vector/seamless-cow-spots-pattern-cow-print.jpg?s=612x612&w=0&k=20&c=U-i7i10idNNSEkISQ-REGSSnic40Cq2UTpji0_9rEn4=");
 }
 
 div {
@@ -12,11 +12,15 @@ h1 {
     color: rgb(255, 255, 255);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     size: 20px;
+    background-color: rgb(46, 167, 84);
+    border: 3px solid black;
 }
 
 h2 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #ffffff;
+    background-color: rgb(46, 167, 84);
+    border: 3px solid black
 }
 
 .container {
