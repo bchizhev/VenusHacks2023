@@ -10,14 +10,16 @@ div {
 
 h1 {
     color: rgb(255, 255, 255);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    size: 20px;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: 'lucida console', monospace;
+    size: 40px;
+    font-size: 70px;
     background-color: rgb(46, 167, 84);
     border: 3px solid black;
 }
 
 h2 {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'lucida console', monospace ;
     color: #ffffff;
     background-color: rgb(46, 167, 84);
     border: 3px solid black
