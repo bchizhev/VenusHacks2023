@@ -14,7 +14,7 @@ async function redirectToAuthCodeFlow(clientId: string) {
 }
 
 async function getAccessToken(clientId: string, code: string) {
-  // TODO: Get access token for code
+    // TODO: Get access token for code
 }
 
 async function fetchProfile(token: string): Promise<any> {
