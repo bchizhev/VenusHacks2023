@@ -10,7 +10,6 @@ div {
 
 h1 {
     color: rgb(255, 255, 255);
-    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
     font-family: 'lucida console', monospace;
     size: 40px;
     font-size: 70px;
@@ -45,6 +44,7 @@ h2 {
     padding: 0 18px;
     line-height: 50px;
     text-align: center;
+    font-family: 'lucida console', monospace;
     
 }
 
@@ -90,7 +90,7 @@ h2 {
     display: inline-grid;
     grid-template-columns: 50% 60%;
     /* padding: 40px 60px; */
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'lucida console', monospace;    
     font-style: bold;
     font-size: 20px;
     margin-right:0px;
@@ -112,5 +112,5 @@ h2 {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'lucida console', monospace;
 }
