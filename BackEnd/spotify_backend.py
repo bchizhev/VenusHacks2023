@@ -60,7 +60,8 @@ def get_top_10_tracks():
     artists_info = extract_artist_info(result)
     user_id = get_user_spotify_id(auth_header)
     similar_songs = get_similar_artists_top_songs(artists_info, auth_header)
-    # playlist_id, playlist_uri = create_new_playlist(user_id, token)
+    playlist_id, playlist_uri = create_new_playlist(user_id, token)
+    playlist_add_songs(playlist_id, playlist_uri, similar_songs, token)
     # print(result.json()['items'][0])
     # artists_info['Stray Kids']
     return jsonify(result.json())
@@ -99,6 +100,16 @@ def create_new_playlist(user_id, token) -> tuple:
     playlist_id = result.json()['id']
     playlist_uri = result.json()['uri']
     return playlist_id, playlist_uri
+
+def playlist_add_songs(playlist_id, playlist_uri, songs_uri, token):
+    url = f'https://api.spotify.com/v1/playlists/{playlist_id}/tracks'
+    auth_header = {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+    }
+    data = json.dumps(songs_uri)
+    result = requests.post(url, headers=auth_header, data=data)
+    print(result)
 
 def get_similar_artists_top_songs(artists, auth_header):
     song_info = []
