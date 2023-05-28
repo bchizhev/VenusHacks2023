@@ -1,9 +1,7 @@
 let serverUrl = 'http://localhost:8000/topTenTracks';
 
 
-function submit() {
-    // let answer1 = document.getElementById('question1').value;
-
+function submit(answer1) {
 
     const urlParams = new URLSearchParams(window.location.search);
     const authToken = urlParams.get('token');
@@ -13,7 +11,7 @@ function submit() {
     fetch(serverUrl, {
       method:'POST',
       body: JSON.stringify({
-        // mood: answer1,
+        mood: answer1,
         authToken: authToken
        
       })
