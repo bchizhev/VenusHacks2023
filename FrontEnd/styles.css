@@ -301,11 +301,119 @@ h2 {
   }
 }
 
+/* CSS mainc */
+.option_mainc {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.option_mainc:hover {
+  background-color: #fff;
+}
+
+.option_mainc:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+    .option_mainc {
+    min-width: 120px;
+    padding: 25px;
+  }
+}
+
+/* CSS cultural */
+.option_cultural {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.option_cultural:hover {
+  background-color: #fff;
+}
+
+.option_cultural:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+    .option_cultural {
+    min-width: 120px;
+    padding: 25px;
+  }
+}
+
+/* CSS neutral */
+.option_neutral {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.option_neutral:hover {
+  background-color: #fff;
+}
+
+.option_neutral:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+    .option_neutral {
+    min-width: 120px;
+    padding: 25px;
+  }
+}
+
 #display {
     background-color: #000000;
     display: inline-grid;
-    grid-template-columns: 40% 60%;
-    padding: 20px 80px;
+    grid-template-columns: 50% 60%;
+    padding: 30px 80px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style: bold;
     font-size: 20px;

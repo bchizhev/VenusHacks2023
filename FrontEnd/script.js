@@ -25,7 +25,7 @@ function submit() {
 
         for(let i = 0; i < data.items.length; i++){
             document.getElementById('display').innerHTML += `
-             <div>${data.items[i].name}</div>
+             <div style = 'border-radius: 10px'>${data.items[i].name}</div>
              <audio controls src="${data.items[i].preview_url}"></audio>
 
             `
