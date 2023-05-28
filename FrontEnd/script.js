@@ -21,7 +21,7 @@ function submit(answer1) {
         // document.getElementById('display').innerHTML = JSON.stringify(data)
         console.log(data)
 
-        for(let i = 0; i < data.items.length; i++){
+        for(let i = 0; i < 10; i++){
             document.getElementById('display').innerHTML += `
              <div style = 'border-radius: 10px'>${data.items[i].name}</div>
 

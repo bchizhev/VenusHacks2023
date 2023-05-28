@@ -123,7 +123,7 @@ def create_new_playlist(user_id, token) -> tuple:
         'Content-Type': 'application/json'
     }
     data = json.dumps({
-        'name': 'yeur',
+        'name': '~~mood~~',
         'description': 'A new curated playlist unique for you based on your mood!',
         'public': False
     })
